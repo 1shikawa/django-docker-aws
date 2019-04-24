@@ -97,8 +97,6 @@ jobs:
   build_test:
     machine:
       image: circleci/classic:edge
-      environment:
-        DJANGO_SETTINGS_MODULE: django_dev.test_settings
     steps:
       - checkout
       - run:
@@ -112,7 +110,7 @@ jobs:
           command: sleep 10
       - run:
           name: "before_test: migrate"
-          command: docker-compose run web python manage.py migrate
+          command: docker-compose run web python manage.py --settings=django_dev.ci_settings migrate
 #      - run:
 #          name: test
 #          command: docker-compose run web python manage.py test sample
