@@ -2,6 +2,7 @@
   {
     "name": "django-service",
     "image": "090442518795.dkr.ecr.ap-northeast-1.amazonaws.com/django:latest",
+    "hostname": "web",
     "cpu": 333,
     "memory": null,
     "memoryReservation": 600,
@@ -37,6 +38,7 @@
     {
     "name": "nginx",
     "image": "090442518795.dkr.ecr.ap-northeast-1.amazonaws.com/nginx:latest",
+    "hostname": "nginx",
     "cpu": 100,
     "memory": null,
     "memoryReservation": 300,
