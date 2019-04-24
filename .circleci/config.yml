@@ -104,7 +104,7 @@ jobs:
           command: docker-compose build
       - run:
           name: docker-compose up
-            command: docker-compose up -d
+          command: docker-compose up -d
       - run:
           name: sleep for waiting launch db
           command: sleep 10
