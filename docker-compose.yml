@@ -22,12 +22,13 @@ services:
   nginx:
     container_name: django.nginx
     restart: always
-    image: nginx
+#    image: nginx
+    build: ./nginx
     ports:
       - "80:80"
     volumes:
       - "./nginx/:/etc/nginx/"
-      - "./web/static:/usr/src/app/static/"
+      - "./static:/usr/src/app/static/"
     depends_on:
       - web
 

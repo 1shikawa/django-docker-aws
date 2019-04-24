@@ -13,7 +13,7 @@
         "containerPort": 8000
       }
     ],
-    "command": ["python", "manage.py", "-collectstatic", "--noinput"],
+    "command": ["gunicorn","django_dev.wsgi","-b","0.0.0.0:8000"],
     "environment": [
       {
         "name": "VERSION_INFO",
@@ -36,7 +36,7 @@
 
     {
     "name": "nginx",
-    "image": "nginx:latest",
+    "image": "090442518795.dkr.ecr.ap-northeast-1.amazonaws.com/nginx:latest",
     "cpu": 100,
     "memory": null,
     "memoryReservation": 300,

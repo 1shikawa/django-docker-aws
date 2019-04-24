@@ -104,7 +104,7 @@ jobs:
           command: docker-compose build
       - run:
           name: docker-compose up
-          command: docker-compose up -d
+            command: docker-compose up -d
       - run:
           name: sleep for waiting launch db
           command: sleep 10
@@ -134,11 +134,14 @@ jobs:
           command: |
             $(aws ecr get-login --no-include-email --region ${AWS_DEFAULT_REGION})
             docker build -t ${ECR_DOMAIN}/django:$CIRCLE_SHA1 -t ${ECR_DOMAIN}/django:latest ./web
+            docker build -t ${ECR_DOMAIN}/nginx:$CIRCLE_SHA1 -t ${ECR_DOMAIN}/nginx:latest ./nginx
       - run:
           name: Push Docker Image
           command: |
             docker push ${ECR_DOMAIN}/django:$CIRCLE_SHA1
             docker push ${ECR_DOMAIN}/django:latest
+            docker push ${ECR_DOMAIN}/nginx:$CIRCLE_SHA1
+            docker push ${ECR_DOMAIN}/nginx:latest
 
   deploy:
     docker:
@@ -162,7 +165,7 @@ jobs:
       - run:
           name: login
           command: |
-            $(aws ecr get-login --no-include-email --region ap-northeast-1)
+            $(aws ecr get-login --no-include-email --region ${AWS_DEFAULT_REGION})
       - run:
           name: deploy
           command: |
