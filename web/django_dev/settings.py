@@ -90,7 +90,7 @@ DATABASES = {
         'NAME': 'mysite',
         'USER': 'mysiteuser',
         'PASSWORD': 'mysitepass',
-        'HOST': 'db',
+        'HOST': 'mysite.ceqjvsgw7652.ap-northeast-1.rds.amazonaws.com',
         'PORT': '3306',
         'OPTIONS': {
             'charset': 'utf8mb4',

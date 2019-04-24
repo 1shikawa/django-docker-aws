@@ -2,7 +2,7 @@
   {
     "name": "django-service",
     "image": "090442518795.dkr.ecr.ap-northeast-1.amazonaws.com/django:latest",
-    "hostname": "web",
+    "hostname": "django-service",
     "cpu": 333,
     "memory": null,
     "memoryReservation": 600,
@@ -14,7 +14,7 @@
         "containerPort": 8000
       }
     ],
-    "command": ["gunicorn","django_dev.wsgi","-b","0.0.0.0:8000"],
+    "command": ["bash","-c","python manage.py makemigrations && python manage.py migrate && gunicorn django_dev.wsgi -b 0.0.0.0:8000"],
     "environment": [
       {
         "name": "VERSION_INFO",
@@ -50,6 +50,7 @@
         "containerPort": 80
       }
     ],
+    "links": ["django-service"],
     "environment": [
       {
         "name": "VERSION_INFO",
