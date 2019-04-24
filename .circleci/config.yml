@@ -95,8 +95,8 @@
 version: 2
 jobs:
   build_test:
-    machine:
-      image: circleci/classic:edge
+    docker:
+      - image: docker:18.09.0
     steps:
       - checkout
       - run:
