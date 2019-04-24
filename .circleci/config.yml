@@ -97,6 +97,8 @@ jobs:
   build_test:
     machine:
       image: circleci/classic:edge
+      environment:
+        DJANGO_SETTINGS_MODULE: django_dev.test_settings
     steps:
       - checkout
       - run:
