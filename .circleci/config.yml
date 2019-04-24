@@ -108,9 +108,9 @@ jobs:
       - run:
           name: sleep for waiting launch db
           command: sleep 10
-      - run:
-          name: "before_test: migrate"
-          command: docker-compose run web python manage.py --settings=django_dev.ci_settings migrate
+#      - run:
+#          name: "before_test: migrate"
+#          command: docker-compose run web python manage.py --settings=django_dev.ci_settings migrate
 #      - run:
 #          name: test
 #          command: docker-compose run web python manage.py test sample
