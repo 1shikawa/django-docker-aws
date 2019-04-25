@@ -25,6 +25,13 @@
         "value": ""
       }
     ],
+    "mountPoints": [
+                {
+                    "sourceVolume": "static-storage",
+                    "containerPath": "/usr/src/app/static",
+                    "readOnly": false
+                }
+            ],
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {
@@ -61,6 +68,13 @@
         "value": ""
       }
     ],
+    "mountPoints": [
+                {
+                    "sourceVolume": "static-storage",
+                    "containerPath": "/usr/src/app/static",
+                    "readOnly": false
+                }
+            ],
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {

@@ -19,5 +19,6 @@ import sample.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', sample.views.hello),
+    # path('', sample.views.hello),
+    path('', sample.views.SampleListView.as_view(), name='sample'),
 ]

@@ -4,6 +4,15 @@ resource "aws_ecs_task_definition" "django-service" {
 
   task_role_arn = "${data.terraform_remote_state.aws_iam.ecs_task_role_arn}"
   network_mode  = "bridge"
+
+  volume {
+    name = "static-storage"
+
+    docker_volume_configuration {
+      scope = "shared"
+      autoprovision = true
+    }
+  }
 }
 
 resource "aws_ecs_task_definition" "django-migrate" {
