@@ -171,7 +171,7 @@ jobs:
           command: |
             aws ecs describe-task-definition --task-definition django-service |
             jq '.taskDefinition | { containerDefinitions: .containerDefinitions }' > definition.json
-#           aws ecs register-task-definition --family django-service --cli-input-json file://definition.json
+          # aws ecs register-task-definition --family django-service --cli-input-json file://definition.json
             aws ecs update-service --cluster django-cluster --service django-service --task-definition django-service
       - run:
           name: migration
