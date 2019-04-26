@@ -79,7 +79,6 @@ WSGI_APPLICATION = 'django_dev.wsgi.application'
 # }
 
 import pymysql
-
 pymysql.install_as_MySQLdb()
 
 DATABASES = {
@@ -90,10 +89,7 @@ DATABASES = {
         'PASSWORD': 'mysitepass',
         'HOST': 'mysite.ceqjvsgw7652.ap-northeast-1.rds.amazonaws.com',
         # 'HOST': 'db',
-        'PORT': '3306',
-        'OPTIONS': {
-            'charset': 'utf8mb4',
-        },
+        'PORT': '3306'
     }
 }
 

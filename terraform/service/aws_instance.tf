@@ -1,6 +1,7 @@
-resource "aws_instance" "django" {
+resource "aws_instance" "django-service" {
   ami                         = "ami-05b296a384694dfa4"
   instance_type               = "t2.small"
+  key_name                    = "${aws_key_pair.auth.id}"
   monitoring                  = true
   iam_instance_profile        = "${data.terraform_remote_state.aws_iam.ecs_instance_profile_name}"
   subnet_id                   = "${data.terraform_remote_state.vpc.public_subnet_1_id}"
@@ -16,3 +17,9 @@ resource "aws_instance" "django" {
     volume_type = "gp2"
   }
 }
+
+resource "aws_key_pair" "auth" {
+  key_name = "django-service"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDGJnF9qa4wfumXhpGsf2qd7EcmsZuU/kBc2sndpedrN2Ym39loj38z8p5qE3QlUfbf7xuYULsz4IcRdXFdl2Ful0hxBrLF3q8iKIpCs5MYHgcOeE2j2kBFGLpE1xizdLhO0UjZiey/AQRSVCmEvzKiY2A/pDmq+yICm/4nYtS25WCwKe7VhAbNE7YyFEqKIKtELnHx2hT0up2qZ/m8VimHb15Y1OjaBuwheammBTLa8L3t8Kx27myv4JvQcHDOlZAOv0jWylPGSxVLejKsJfNB5/IEbr8tqWmkCQqyK3jTLuE4mwW89hX8TWGjJ91iwUMQ70hlMN1QAvoUDUKHArtH imported-openssh-key"
+}
+
